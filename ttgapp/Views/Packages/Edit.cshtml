@@ -1,0 +1,84 @@
+﻿@model ttgapp.Models.Package
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Package</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PackageId" />
+            <div class="form-group">
+                <label asp-for="PackageName" class="control-label"></label>
+                <input asp-for="PackageName" class="form-control" />
+                <span asp-validation-for="PackageName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackageDescription" class="control-label"></label>
+                <input asp-for="PackageDescription" class="form-control" />
+                <span asp-validation-for="PackageDescription" class="text-danger"></span>
+            </div>
+
+           @*  <div class="form-group">
+                <label asp-for="PackageImagepath" class="control-label"></label>
+                <input asp-for="PackageImagepath" class="form-control" />
+                <span asp-validation-for="PackageImagepath" class="text-danger"></span>
+            </div> *@
+
+            <div class="form-group">
+                <label asp-for="PackageImagepath" class="control-label">Current Image</label>
+                <img src="@Url.Content(Model.PackageImagepath)"
+                     width="600"
+                     height="150"
+                     alt="@Model.PackageName" />
+                <span asp-validation-for="PackageImagepath" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="PackageImagepath" class="control-label">Selected New Type Image</label>
+                <img id="PackageImagePreview" class="form-control" width="600" height="150" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Select New Package Image</label>
+                <input type="file" class="form-control" name="PackageImage" onchange="DisplayImage(event)" />
+                <span asp-validation-for="PackageImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackageVideopath" class="control-label"></label>
+                <input asp-for="PackageVideopath" class="form-control" />
+                <span asp-validation-for="PackageVideopath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackagePrice" class="control-label"></label>
+                <input asp-for="PackagePrice" class="form-control" />
+                <span asp-validation-for="PackagePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PackageStatus" /> @Html.DisplayNameFor(model => model.PackageStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    var DisplayImage=function (event) {
+        console.log(event.target.value);
+        var previewImage=document.getElementById("PackageImagePreview");
+        console.log(event.target.files[0]);
+        previewImage.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

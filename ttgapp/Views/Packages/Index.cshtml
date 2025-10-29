@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ttgapp.Models.Package>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageDescription)
+            </th>
+            <th>
+          
+                <label>
+                    PackageImage
+                </label>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageVideopath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackagePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageDescription)
+            </td>
+            <td>
+                <img src="@Url.Content(item.PackageImagepath)" alt="@item.PackageName" width="400" height="150" />
+            </td>
+            <td>
+                @Html.Raw(item.PackageVideopath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackagePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PackageId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PackageId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
