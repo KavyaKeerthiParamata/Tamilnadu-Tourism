@@ -20,3 +20,107 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* ===== Global Background ===== */
+body {
+    background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9); /* Soft green gradient */
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #333;
+}
+
+/* ===== Card Styling ===== */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 20px rgba(0,128,0,0.2);
+        background: linear-gradient(135deg, #e6ffe6, #f9fff9); /* Faint green gradient */
+    }
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* ===== Card Footer ===== */
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    background-color: #fff;
+    color: #28a745;
+    border: 1px solid #28a745;
+    font-weight: bold;
+    width: 100%;
+    transition: 0.3s;
+    border-radius: 8px; /* Slightly rounded */
+}
+
+    .btn-primary:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+/* ===== Login Card ===== */
+.login-card {
+    width: 400px;
+    border-radius: 15px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+    margin: auto;
+}
+
+    .login-card:hover {
+        background: linear-gradient(135deg, #e6ffe6, #f9fff9);
+        box-shadow: 0 8px 20px rgba(0,128,0,0.2);
+        transform: scale(1.02);
+    }
+
+/* ===== Slider Styling ===== */
+.carousel-item img {
+    height: 450px; /* Adjust slider height */
+    object-fit: cover; /* Crop image nicely */
+    width: 100%;
+}
+
+.carousel-caption {
+    background: rgba(0, 128, 0, 0.3); /* Faint green overlay */
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* ===== Details Page Card ===== */
+.details-card {
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+    .details-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(0,128,0,0.2);
+    }
+
+    .details-card dl dt {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .details-card dl dd {
+        margin-bottom: 10px;
+    }
