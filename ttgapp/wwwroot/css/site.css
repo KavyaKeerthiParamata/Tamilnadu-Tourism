@@ -99,6 +99,11 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
+.carousel-item img {
+    height: 450px; /* Increase slider height */
+    object-fit: cover; /* Crop image nicely */
+    width: 100%;
+}
 
 /* ===== Details Page Card ===== */
 .details-card {
