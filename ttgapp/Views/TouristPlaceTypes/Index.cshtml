@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ttgapp.Models.TouristPlaceType>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TPTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TpTypeImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TpDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPTypeStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPTypeName)
+            </td>
+            <td>
+                    <img src="@Url.Content(item.TpTypeImagePath)"
+                         alt="@item.TPTypeName"
+                         width="300"
+                         height="150" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TpDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPTypeStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TPTypeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TPTypeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TPTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

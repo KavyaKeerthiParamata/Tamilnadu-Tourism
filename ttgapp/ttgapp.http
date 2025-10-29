@@ -1,0 +1,6 @@
+@ttgapp_HostAddress = http://localhost:5047
+
+GET {{ttgapp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

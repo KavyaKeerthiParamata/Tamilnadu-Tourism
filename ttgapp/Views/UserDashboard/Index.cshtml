@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<h2>Welcome to Your Dashboard</h2>
+
+@if (ViewBag.UserId != null)
+{
+    <p>Hello, <strong>@ViewBag.UserId</strong>! You are successfully logged in.</p>
+}
+else
+{
+    <p>Welcome! You are logged in as a user.</p>
+}
+
+<hr />
+
+<!-- You can add more features here -->
+<ul>
+    <li><a href="/User/Profile">View Profile</a></li>
+    <li><a href="/User/Logout">Logout</a></li>
+</ul>

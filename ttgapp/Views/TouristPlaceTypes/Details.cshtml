@@ -1,0 +1,48 @@
+﻿@model ttgapp.Models.TouristPlaceType
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TouristPlaceType</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TPTypeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TPTypeName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TpTypeImagePath)
+        </dt>
+       
+        <dd class="col-sm-10">
+            <img src="@Url.Content(Model.TpTypeImagePath)"
+                 width="400"
+                 height="75"
+                 alt="@Model.TPTypeId" />
+        </dd>
+           
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TpDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TpDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TPTypeStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TPTypeStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.TPTypeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

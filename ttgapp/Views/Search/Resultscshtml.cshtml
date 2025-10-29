@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model SearchResultsViewModel
+
+<h2>Search Results for "@Model.Query"</h2>
+
+@if (!Model.TouristPlaces.Any() && !Model.Packages.Any() && !Model.ImageGalleries.Any())
+{
+    <p>No results found.</p>
+}
+else
+{
+    @if (Model.TouristPlaces.Any())
+    {
+        <h4>Tourist Places</h4>
+        <ul>
+            @foreach (var place in Model.TouristPlaces)
+            {
+                <li>@place.TPName</li>
+            }
+        </ul>
+    }
+
+    @if (Model.Packages.Any())
+    {
+        <h4>Packages</h4>
+        <ul>
+            @foreach (var pkg in Model.Packages)
+            {
+                <li>@pkg.PackageName</li>
+            }
+        </ul>
+    }
+
+    @if (Model.ImageGalleries.Any())
+    {
+        <h4>Gallery Images</h4>
+        <ul>
+            @foreach (var img in Model.ImageGalleries)
+            {
+                <li>@img.ImageGalleryName</li>
+            }
+        </ul>
+    }
+}

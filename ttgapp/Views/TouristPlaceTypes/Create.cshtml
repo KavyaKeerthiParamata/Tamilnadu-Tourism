@@ -1,0 +1,66 @@
+﻿@model ttgapp.Models.TouristPlaceType
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>TouristPlaceType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TPTypeName" class="control-label"></label>
+                <input asp-for="TPTypeName" class="form-control" />
+                <span asp-validation-for="TPTypeName" class="text-danger"></span>
+            </div>
+           @*  <div class="form-group">
+                <label asp-for="TpTypeImagePath" class="control-label"></label>
+                <input asp-for="TpTypeImagePath" class="form-control" />
+                <span asp-validation-for="TpTypeImagePath" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label class="control-label">Selected Type Image</label>
+                <img id="TypeImagePreview"
+                     class="form-control"
+                     width="600"
+                     height="150" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Select Type Image</label>
+                <input type="file" class="form-control" name="TPTypeImage" onchange="DisplayImage(event)" />
+                <span asp-validation-for="TpTypeImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TpDescription" class="control-label"></label>
+                <textarea asp-for="TpDescription" class="form-control"></textarea>
+                <span asp-validation-for="TpDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TPTypeStatus" /> @Html.DisplayNameFor(model => model.TPTypeStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var DisplayImage=function (event) {
+        console.log(event.target.value);
+        var previewImage=document.getElementById("TypeImagePreview");
+        console.log(event.target.files[0]);
+        previewImage.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

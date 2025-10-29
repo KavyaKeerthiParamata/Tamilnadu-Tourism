@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<ttgapp.Models.TouristPlaceType>
+
+@using ttgapp.Services
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    var tptypesList = Model;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Tamil Nadu Tourism Guide</h1>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    @{
+        foreach (TouristPlaceType tpType in tptypesList)
+        {
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@Url.Content(tpType.TpTypeImagePath)"
+                         class="card-img-top"
+                         alt="@tpType.TPTypeName">
+                    <div class="card-body">
+                        <h5 class="card-title">@tpType.TPTypeName</h5>
+
+                        <p class="card-text">
+                            @tpType.TpDescription.Substring(0, 70)
+                            .......
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="@Url.Action("TouristPlacesByType", "Home", new { typeId = tpType.TPTypeId })" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        }
+    }
+
+
+
+
+
+</div>
+
+

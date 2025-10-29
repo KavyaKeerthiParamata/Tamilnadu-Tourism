@@ -1,0 +1,128 @@
+﻿@model IEnumerable<ttgapp.Models.TouristPlace>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TPName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPlongitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPlatitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPGoogleLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TPStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BestTimeToVisit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransportationDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.touristPlaceType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPDescription)
+            </td>
+            <td>
+               
+                    <img src="@Url.Content(item.TPImagePath)" 
+                         alt="@item.TPName" width="400" height="150" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPlongitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPlatitude)
+            </td>
+            <td>
+               @Html.Raw(item.TPGoogleLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BestTimeToVisit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransportationDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccomodationDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.touristPlaceType.TPTypeName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TPId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TPId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TPId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

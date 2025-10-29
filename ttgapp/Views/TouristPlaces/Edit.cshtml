@@ -1,0 +1,132 @@
+﻿@model ttgapp.Models.TouristPlace
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>TouristPlace</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TPId" />
+            <div class="form-group">
+                <label asp-for="TPName" class="control-label"></label>
+                <input asp-for="TPName" class="form-control" />
+                <span asp-validation-for="TPName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPDescription" class="control-label"></label>
+                <input asp-for="TPDescription" class="form-control" />
+                <span asp-validation-for="TPDescription" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="TPImagePath" class="control-label">Current Image</label>
+                <img src="@Url.Content(Model.TPImagePath)"
+                     width="600"
+                     height="150"
+                     alt="@Model.TPName" />
+                <span asp-validation-for="TPImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPImagePath" class="control-label">Selected New Type Image</label>
+                <img id="PlaceImagePreview" class="form-control" width="600" height="150" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Select New Type Image</label>
+                <input type="file" class="form-control" name="TPImage" onchange="DisplayImage(event)" />
+                <span asp-validation-for="TPImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPlongitude" class="control-label"></label>
+                <input asp-for="TPlongitude" class="form-control" />
+                <span asp-validation-for="TPlongitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPlatitude" class="control-label"></label>
+                <input asp-for="TPlatitude" class="form-control" />
+                <span asp-validation-for="TPlatitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPGoogleLink" class="control-label"></label>
+                <input asp-for="TPGoogleLink" class="form-control" />
+                <span asp-validation-for="TPGoogleLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPRating" class="control-label"></label>
+                <input asp-for="TPRating" class="form-control" />
+                <span asp-validation-for="TPRating" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TPStatus" /> @Html.DisplayNameFor(model => model.TPStatus)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <select asp-for="District" class="form-control" asp-items="ViewBag.Districts"></select>
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BestTimeToVisit" class="control-label"></label>
+                <input asp-for="BestTimeToVisit" class="form-control" />
+                <span asp-validation-for="BestTimeToVisit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransportationDetails" class="control-label"></label>
+                <input asp-for="TransportationDetails" class="form-control" />
+                <span asp-validation-for="TransportationDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccomodationDetails" class="control-label"></label>
+                <input asp-for="AccomodationDetails" class="form-control" />
+                <span asp-validation-for="AccomodationDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsPopular" class="control-label">Mark as Popular</label>
+                <input asp-for="IsPopular" class="form-check-input" type="checkbox" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TPTypeId" class="control-label"></label>
+                <input asp-for="TPTypeId" class="form-control" />
+                <span asp-validation-for="TPTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    var DisplayImage=function (event) {
+        console.log(event.target.value);
+        var previewImage=document.getElementById("PlaceImagePreview");
+        console.log(event.target.files[0]);
+        previewImage.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
