@@ -96,7 +96,6 @@ body {
 }
 
 .carousel-caption {
-    background: rgba(0, 128, 0, 0.3); /* Faint green overlay */
     border-radius: 10px;
     padding: 10px;
 }
