@@ -4,24 +4,27 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome To Tamil Nadu Tourism Guide</h1>
+    <h1 style="font-family: 'Kalam', cursive; font-weight: 700; text-align: center;">
+        Vanakkam 
+    </h1>
 </div>
-
-<h2 class="mt-5">Popular Destinations</h2>
+<h2 style="font-family: 'Kalam', cursive; font-weight: 700; font-size: 2.0rem;">
+    Popular Destinations
+</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var place in Model)
     {
         <div class="col">
-            <div class="card h-100">
-                <img src="@place.TPImagePath" class="card-img-top" alt="@place.TPName" style="height:200px; object-fit:cover;" />
-                <div class="card-body">
-                    <h5 class="card-title">@place.TPName</h5>
-                    <p class="card-text">@place.TPDescription?.Substring(0, 70)...</p>
-                </div>
-                <div class="card-footer">
+            <div class="card tourist-card" style="background-image: url('@place.TPImagePath');">
+                <div class="overlay">
+                    <h5>@place.TPName</h5>
+                    <p>@place.TPDescription?.Substring(0, 70)...</p>
                     <a href="@Url.Action("Details", "TouristPlaces", new { id = place.TPId })" class="btn btn-success">Explore</a>
                 </div>
             </div>
         </div>
     }
 </div>
+
+ 
+

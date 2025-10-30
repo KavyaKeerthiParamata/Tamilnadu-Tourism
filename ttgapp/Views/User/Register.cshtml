@@ -72,7 +72,10 @@
     <form asp-controller="User" asp-action="Register" method="post" class="register-card" novalidate>
         @Html.AntiForgeryToken()
 
+        
+            <div class="card-header">
         <h2>User Registration</h2>
+        </div>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -112,7 +115,10 @@
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <div class="text-center">
+            <input type="submit" value="Register" class="btn btn-primary" />
+        </div>
+       
     </form>
 </div>
 
