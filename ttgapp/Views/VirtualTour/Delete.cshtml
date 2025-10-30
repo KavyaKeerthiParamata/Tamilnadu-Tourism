@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ttgapp.Models.VirtualTour
+
+@{
+    ViewData["Title"] = "Delete Virtual Tour";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete Virtual Tour</h2>
+<p>Are you sure you want to delete <strong>@Model.Title</strong>?</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="VirtualTourId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="AdminIndex" class="btn btn-secondary">Cancel</a>
+</form>

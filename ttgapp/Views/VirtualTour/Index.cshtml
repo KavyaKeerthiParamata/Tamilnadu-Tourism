@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<ttgapp.Models.VirtualTour>
+
+@{
+    ViewData["Title"] = "Virtual Tours";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Explore Virtual Tours</h2>
+<div class="row">
+    @foreach (var tour in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@Url.Content(tour.ThumbnailImagePath ?? tour.TouristPlace?.TPImagePath)" class="card-img-top" alt="@tour.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@tour.Title</h5>
+                    <p class="card-text">@tour.Description?.Substring(0, Math.Min(100, tour.Description.Length))...</p>
+                    <a asp-action="Details" asp-route-id="@tour.VirtualTourId" class="btn btn-primary">View Tour</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

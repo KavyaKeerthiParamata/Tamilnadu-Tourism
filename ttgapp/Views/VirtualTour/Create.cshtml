@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ttgapp.Models.VirtualTour
+
+@{
+    ViewData["Title"] = Model.VirtualTourId == 0 ? "Create Virtual Tour" : "Edit Virtual Tour";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@ViewData["Title"].ToString().Contains("Edit") ? "Edit" : "Create"">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ThumbnailImagePath">Thumbnail Image URL</label>
+        <input asp-for="ThumbnailImagePath" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VideoEmbedCode">YouTube Embed Code or iframe</label>
+        <textarea asp-for="VideoEmbedCode" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ExternalTourLink">360° Virtual Tour Link</label>
+        <input asp-for="ExternalTourLink" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TPId">Tourist Place</label>
+        <select asp-for="TPId" asp-items="@(new SelectList(ViewData["touristPlaces"] as List<ttgapp.Models.TouristPlace>, "TPId", "TPName"))" class="form-control"></select>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="IsActive" class="form-check-input" />
+        <label asp-for="IsActive" class="form-check-label">Active</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

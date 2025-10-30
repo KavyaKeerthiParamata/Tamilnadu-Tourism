@@ -19,6 +19,8 @@ namespace ttgapp.Dal
             modelBuilder.Entity<TouristPlaceType>().ToTable("TouristPlaceType");
             modelBuilder.Entity<TouristPlace>().ToTable("TouristPlace");
             modelBuilder.Entity<Package>().ToTable("Package");
+            modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<VirtualTour>().ToTable("VirtualTour");
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
@@ -39,6 +41,8 @@ namespace ttgapp.Dal
         public DbSet<Package> packages { get; set; }
         public DbSet<ttgapp.Models.UserLogin> UserLogin { get; set; } = default!;
         public DbSet<ttgapp.Models.ImageGallery> ImageGallery { get; set; } = default!;
+
+        public DbSet<ttgapp.Models.VirtualTour> VirtualTour { get; set; } = default!;
 
     }
 }

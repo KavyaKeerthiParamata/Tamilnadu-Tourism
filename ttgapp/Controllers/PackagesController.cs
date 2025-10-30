@@ -219,6 +219,14 @@ namespace ttgapp.Controllers
 
             return View(packages);
         }
+        public IActionResult PublicDetails(int id)
+        {
+            var pkg = _context.packages.FirstOrDefault(p => p.PackageId == id && p.PackageStatus == true);
+            if (pkg == null)
+                return NotFound();
+
+            return View(pkg);
+        }
 
     }
 }

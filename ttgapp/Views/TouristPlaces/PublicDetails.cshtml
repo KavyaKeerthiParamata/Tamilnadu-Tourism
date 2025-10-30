@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ttgapp.Models.TouristPlace
+
+@{
+    ViewData["Title"] = "Explore @Model.TPName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <img src="@Url.Content(Model.TPImagePath)" class="card-img-top" alt="@Model.TPName" style="height:400px; object-fit:cover;" />
+        <div class="card-body">
+            <h2 class="card-title">@Model.TPName</h2>
+            <p class="card-text">@Model.TPDescription</p>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <p><strong>Location:</strong> @Model.Location, @Model.District, @Model.State, @Model.Country</p>
+                    <p><strong>Best Time to Visit:</strong> @Model.BestTimeToVisit</p>
+                    <p><strong>Rating:</strong> ⭐ @Model.TPRating</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Transportation:</strong> @Model.TransportationDetails</p>
+                    <p><strong>Accommodation:</strong> @Model.AccomodationDetails</p>
+                    @if (!string.IsNullOrEmpty(Model.TPGoogleLink))
+                    {
+                        <p><strong>Map:</strong></p>
+                        <div class="ratio ratio-16x9">
+                            @Html.Raw(Model.TPGoogleLink)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

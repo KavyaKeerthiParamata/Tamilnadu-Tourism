@@ -256,5 +256,17 @@ namespace ttgapp.Controllers
         {
             return _context.touristPlaces.Any(e => e.TPId == id);
         }
+        public IActionResult PublicDetails(int id)
+        {
+            var place = _context.touristPlaces
+                .Include(tp => tp.touristPlaceType)
+                .FirstOrDefault(tp => tp.TPId == id && tp.TPStatus == true);
+
+            if (place == null)
+                return NotFound();
+
+            return View(place);
+        }
+
     }
 }

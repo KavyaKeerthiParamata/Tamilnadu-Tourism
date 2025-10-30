@@ -17,9 +17,10 @@
                 <div class="card-body">
                     <h5 class="card-title">@place.TPName</h5>
                     <p class="card-text">@place.TPDescription?.Substring(0, 70)...</p>
-                </div>
+                </div>   
                 <div class="card-footer">
-                    <a href="@Url.Action("Details", "TouristPlaces", new { id = place.TPId })" class="btn btn-success">Explore</a>
+                    <a href="@Url.Action("PublicDetails", "TouristPlaces", new { id = place.TPId })">Explore</a>
+
                 </div>
             </div>
         </div>

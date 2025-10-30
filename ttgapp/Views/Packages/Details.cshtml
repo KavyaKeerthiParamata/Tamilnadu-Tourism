@@ -37,7 +37,7 @@
             @Html.DisplayNameFor(model => model.PackageVideopath)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PackageVideopath)
+            @Html.Raw(Model.PackageVideopath)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PackagePrice)

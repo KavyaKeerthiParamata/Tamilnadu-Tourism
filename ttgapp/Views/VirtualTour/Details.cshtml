@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ttgapp.Models.VirtualTour
+
+@{
+    ViewData["Title"] = "Virtual Tour - " + Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<p>@Model.Description</p>
+
+@if (!string.IsNullOrEmpty(Model.VideoEmbedCode))
+{
+    <div class="video-wrapper">
+        @Html.Raw(Model.VideoEmbedCode)
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.ExternalTourLink))
+{
+    <div class="mt-4">
+        <iframe src="@Model.ExternalTourLink" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+    </div>
+}
+
+<style>
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+    }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+</style>
