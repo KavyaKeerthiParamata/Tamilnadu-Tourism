@@ -23,7 +23,7 @@ body {
 
 /* ===== Global Background ===== */
 body {
-    background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9); /* Soft green gradient */
+   /* background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9);  Soft green gradient */
     font-family: 'Segoe UI', Tahoma, sans-serif;
     color: #333;
 }
@@ -90,7 +90,7 @@ body {
 
 /* ===== Slider Styling ===== */
 .carousel-item img {
-    height: 450px; /* Adjust slider height */
+    height: 600px; /* Adjust slider height */
     object-fit: cover; /* Crop image nicely */
     width: 100%;
 }
@@ -127,4 +127,33 @@ body {
 
     .details-card dl dd {
         margin-bottom: 10px;
+    }
+
+.tourist-card {
+    height: 450px; /* Increased height for a bigger image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 0; /* Sharp corners */
+    overflow: hidden;
+    color: #fff;
+}
+
+    .tourist-card .overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .tourist-card h5 {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .tourist-card p {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
     }

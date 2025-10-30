@@ -9,7 +9,7 @@
     body {
         margin: 0;
         padding: 0;
-        background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9); 
+        /*background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9); */
         font-family: 'Segoe UI', Tahoma, sans-serif;
         color: #333;
     }
@@ -78,6 +78,11 @@
                 <div class="text-center">
                     <input type="submit" value="Sign In" class="btn btn-primary" />
                 </div>
+                <div style="text-align: center; margin-top: 15px;">
+    <span>Don't have an account? </span>
+    <a href="@Url.Action("Register", "User")">Register</a>
+</div>
+    
             </form>
         </div>
     </div>
