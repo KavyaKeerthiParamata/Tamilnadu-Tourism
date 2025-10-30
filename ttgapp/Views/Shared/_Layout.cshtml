@@ -62,16 +62,21 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Gallery" asp-action="Index">Image Gallery</a>
                             </li>
-                            <li class="nav-item">
-                                <form class="d-flex" asp-controller="Search" asp-action="Results" method="get">
-                                    <input class="form-control me-2" type="search" name="query" placeholder="Search places..." />
-                                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                                </form>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="User" asp-action="Logout">Logout</a>
-                            </li>
+                            
                         }
+                    </ul>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <form class="d-flex" asp-controller="Search" asp-action="Results" method="get">
+                                <input class="form-control me-2" type="search" name="query" placeholder="Search places..." />
+                                <button class="btn btn-outline-primary" type="submit">Search</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="User" asp-action="Logout">Logout</a>
+                        </li>
                     </ul>
                 </div>
             </div>

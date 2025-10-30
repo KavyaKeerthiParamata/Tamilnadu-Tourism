@@ -14,8 +14,10 @@ namespace ttgapp.Controllers
             _context = context;
         }
 
+        
         public IActionResult Login()
         {
+
             return View();
         }
 

@@ -5,114 +5,109 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Delete</h1>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9);
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        color: #333;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>TouristPlace</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPDescription)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPDescription)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPImagePath)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPImagePath)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPlongitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPlongitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPlatitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPlatitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPGoogleLink)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPGoogleLink)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPRating)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPRating)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPStatus)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPStatus)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.District)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.District)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.State)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BestTimeToVisit)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BestTimeToVisit)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TransportationDetails)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TransportationDetails)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccomodationDetails)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccomodationDetails)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TPTypeId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TPTypeId)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="TPId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .delete-card {
+        width: 700px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        padding: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+        .delete-card:hover {
+            transform: translateY(-5px);
+            background-color: #e8f5e9;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .delete-card h1, .delete-card h3, .delete-card h4 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+    .btn-danger {
+        width: 100px;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    dl.row {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="center-container">
+    <div class="delete-card">
+        <h1> Delete</h1>
+        <h3>Are you sure you want to delete this?</h3>
+        <h4>Tourist Place Details</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPName)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPName)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPDescription)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPDescription)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPImagePath)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPImagePath)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPlongitude)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPlongitude)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPlatitude)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPlatitude)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPGoogleLink)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPGoogleLink)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPRating)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPRating)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TPStatus)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TPStatus)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Location)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Location)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.District)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.District)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.State)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.State)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Country)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Country)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BestTimeToVisit)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.BestTimeToVisit)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TransportationDetails)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TransportationDetails)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AccomodationDetails)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.AccomodationDetails)</dd>
+		</dl>
+   </div>
 </div>

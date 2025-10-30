@@ -1,55 +1,112 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model ttgapp.Models.User
+﻿@model ttgapp.Models.User
 
 @{
     ViewData["Title"] = "Register";
 }
 
-<h2>User Registration</h2>
-<hr />
-<form asp-action="Register" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9);
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        color: #333;
+    }
 
-    <div class="form-group">
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" class="form-control" />
-        <span asp-validation-for="FirstName" class="text-danger"></span>
-    </div>
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-    <div class="form-group">
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" class="form-control" />
-        <span asp-validation-for="LastName" class="text-danger"></span>
-    </div>
+    .register-card {
+        width: 420px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        padding: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
 
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
+    .register-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        background-color: #e8f5e9; /* Light green on hover */
+    }
 
-    <div class="form-group">
-        <label asp-for="Mobile"></label>
-        <input asp-for="Mobile" class="form-control" />
-        <span asp-validation-for="Mobile" class="text-danger"></span>
-    </div>
+    .register-card h2 {
+        text-align: center;
+        
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-    <div class="form-group">
-        <label asp-for="UserId"></label>
-        <input asp-for="UserId" class="form-control" />
-        <span asp-validation-for="UserId" class="text-danger"></span>
-    </div>
+    .btn-primary {
+        width: 100%;
+        
+        border-color: #4CAF50;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" class="form-control" type="password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
+    .btn-primary:hover {
+        background-color: #388e3c;
+        transform: scale(1.03);
+    }
 
-   
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
 
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+<div class="center-container">
+    <form asp-controller="User" asp-action="Register" method="post" class="register-card" novalidate>
+        @Html.AntiForgeryToken()
 
+        <h2>User Registration</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" type="email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Mobile" class="control-label"></label>
+            <input asp-for="Mobile" type="tel" class="form-control" />
+            <span asp-validation-for="Mobile" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UserId" class="control-label"></label>
+            <input asp-for="UserId" class="form-control" />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

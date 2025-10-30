@@ -5,13 +5,62 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f0fff0, #e6ffe6, #f9fff9); /* Soft green gradient */
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        color: #333;
+    }
+
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-card {
+        width: 400px;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-card h3 {
+        text-align: center;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    .card-footer {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .card-footer a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .card-footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="center-container">
     <div class="card login-card">
         <div class="card-header">
             <h3>Login</h3>
         </div>
         <div class="card-body">
-            <form asp-action="ValidateUser">
+            <form asp-controller="User" asp-action="ValidateUser" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                 <div class="form-group mb-3">
@@ -27,12 +76,9 @@
                 </div>
 
                 <div class="text-center">
-                    <input type="submit" value="Signin" class="btn btn-primary" />
+                    <input type="submit" value="Sign In" class="btn btn-primary" />
                 </div>
             </form>
-        </div>
-        <div class="card-footer">
-            IndexBack to List</a>
         </div>
     </div>
 </div>
