@@ -10,119 +10,346 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TPName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPlongitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPlatitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPGoogleLink)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TPStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.District)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BestTimeToVisit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TransportationDetails)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccomodationDetails)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.touristPlaceType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TPName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TPDescription)
-            </td>
-            <td>
-               
-                    <img src="@Url.Content(item.TPImagePath)" 
-                         alt="@item.TPName" width="400" height="150" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TPlongitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TPlatitude)
-            </td>
-            <td>
-               @Html.Raw(item.TPGoogleLink)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TPRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TPStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.District)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BestTimeToVisit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransportationDetails)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccomodationDetails)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.touristPlaceType.TPTypeName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TPId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TPId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TPId">Delete</a>
-            </td>
-        </tr>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <label>select touristplace type</label>
+            <select name="typeId" class="form-control" asp-items="ViewBag.TPTypeId"></select>
+            <input type="submit" value="Load" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+@{
+    int i = 1;
+    string accIdValue = "";
+    string collapseValue = "";
+    foreach (var tp in Model)
+    {
+        accIdValue = $"accordionExample{i}";
+        collapseValue = $"collapse{i}";
+        <div class="accordion" id=@accIdValue>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        @tp.TPName
+                    </button>
+                </h2>
+                <div id="@collapseValue"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TPName
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Description
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TPDescription
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Image
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        <img src="@Url.Content(tp.TPImagePath)"
+                             alt="@tp.TPName"
+                             width="400"
+                             height="150" />
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Longitude
+                    </button>
+                </h2>
+                <div id="@collapseValue"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TPlongitude
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Latitude
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TPlatitude
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Google Map
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @Html.Raw(tp.TPGoogleLink)
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Rating
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TPRating
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Status
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TPStatus
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Location
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.Location
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        District
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.District
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        State
+                    </button>
+                </h2>
+                <div id="@collapseValue"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.State
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Country
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.Country
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseValue" aria-expanded="true" aria-controls="@collapseValue">
+                        Best Time To Visit
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.BestTimeToVisit
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseValue" aria-expanded="true" aria-controls="@collapseValue">
+                        Transportation Details
+                    </button>
+                </h2>
+                <div id="@collapseValue" class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.TransportationDetails
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseValue" aria-expanded="true" aria-controls="@collapseValue">
+                        Accomodation Details
+                    </button>
+                </h2>
+                <div id="@collapseValue"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.AccomodationDetails
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        TouristPlaceType
+                    </button>
+                </h2>
+                <div id="@collapseValue"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        @tp.touristPlaceType.TPTypeName
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseValue"
+                            aria-expanded="true"
+                            aria-controls="@collapseValue">
+                        Options
+                    </button>
+                </h2>
+                <div id="@collapseValue"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#@accIdValue">
+                    <div class="accordion-body">
+                        <a asp-action="Edit" asp-route-id="@tp.TPId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@tp.TPId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@tp.TPId">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        i = i + 1;
+    }
+
 }
-    </tbody>
-</table>

@@ -211,5 +211,14 @@ namespace ttgapp.Controllers
         {
             return _context.packages.Any(e => e.PackageId == id);
         }
+        public IActionResult PublicPackages()
+        {
+            var packages = _context.packages
+                .Where(p => p.PackageStatus == true)
+                .ToList();
+
+            return View(packages);
+        }
+
     }
 }
